@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/MechanicalPortal/static/css/main.e6c13ad2.css",
+    "main.js": "/MechanicalPortal/static/js/main.237d9f4a.js",
+    "static/js/453.a75a1c6d.chunk.js": "/MechanicalPortal/static/js/453.a75a1c6d.chunk.js",
+    "index.html": "/MechanicalPortal/index.html",
+    "main.e6c13ad2.css.map": "/MechanicalPortal/static/css/main.e6c13ad2.css.map",
+    "main.237d9f4a.js.map": "/MechanicalPortal/static/js/main.237d9f4a.js.map",
+    "453.a75a1c6d.chunk.js.map": "/MechanicalPortal/static/js/453.a75a1c6d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.237d9f4a.js"
+  ]
+}
