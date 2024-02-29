@@ -5,6 +5,7 @@ export function Typer ()
 {
     const [text, setText] = useState(["kaas", "aap", "hoofd", "banaan", "appel", "wortel"]);
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [incorrect, setIncorrect] = useState([])
 
     const handleSpaceBar = (e) => 
     {
@@ -21,23 +22,27 @@ export function Typer ()
         }
     };
 
-    const checkInput = () =>
+    const checkInput = (input) =>
     {
-
+        if (input != text[currentIndex])
+        {
+            setIncorrect([...incorrect, text[currentIndex]])
+        }       
     }; 
 
     return (
         <div className="TypeDiv">
             <div>
+            <div>
                 {text && 
                     text.map((word, index) => 
                     (
-                        <span className={index == currentIndex ? "active" : "not-active"}key={index}>{word} </span>
+                        <span className={index == currentIndex ? "active" :  index < currentIndex ? (text[index] in incorrect ? "incorrect" : "correct") :  "not-active"}key={index}>{word} </span>
                     )
                 )}
             </div>
             <input id="input-field" type="text" onKeyUp={handleSpaceBar}></input>
-
+            </div>
         </div>
     );
 }

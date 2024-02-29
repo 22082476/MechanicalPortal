@@ -1,9 +1,29 @@
+.TypeDiv
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    width: 100vw;
+    height: 100vh;
+}
+
 .active
 {
-    color: green;
+    color: blue;
 }
 
 .not-active
 {
     color: black;
+}
+
+.incorrect
+{
+    color: red;
+}
+
+.correct
+{
+    color: green;
 }
