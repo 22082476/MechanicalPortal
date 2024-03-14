@@ -1,3 +1,9 @@
+html
+{
+    background-color: #161b21;
+    font-size: large;
+}
+
 .TypeDiv
 {
     display: flex;
@@ -8,14 +14,22 @@
     height: 100vh;
 }
 
+.center-div
+{
+    background-color: #27303a;
+    padding: 20px 50px 20px 50px;
+    border-radius: 20px;
+}
+
+
 .active
 {
-    color: blue;
+    color: rgb(174, 0, 255);
 }
 
 .not-active
 {
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .incorrect
@@ -25,5 +39,24 @@
 
 .correct
 {
-    color: green;
+    color: rgb(14, 245, 41);
+}
+
+.button
+{
+    background-color: #27303a;
+    color: #FFFF;
+    padding: 10px;
+    border: transparent;
+    font-size: inherit;
+}
+
+.button-active, .button:hover
+{
+    background-color: #27303a;
+    color: #FFFF;
+    padding: 10px;
+    border: transparent;
+    text-decoration: underline;
+    font-size: inherit;
 }
