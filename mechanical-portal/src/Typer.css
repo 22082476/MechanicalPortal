@@ -1,0 +1,75 @@
+html
+{
+    background-color: #161b21;
+    font-size: large;
+}
+
+.TypeDiv
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+.center-div
+{
+    background-color: #27303a;
+    padding: 20px 50px 20px 50px;
+    border-radius: 20px;
+}
+
+
+.active
+{
+    color: rgb(174, 0, 255);
+}
+
+.not-active
+{
+    color: rgb(255, 255, 255);
+}
+
+.incorrect
+{
+    color: red;
+}
+
+.correct
+{
+    color: rgb(14, 245, 41);
+}
+
+.button
+{
+    background-color: #27303a;
+    color: #FFFF;
+    padding: 10px;
+    border: transparent;
+    font-size: inherit;
+}
+
+.button-active, .button:hover
+{
+    background-color: #27303a;
+    color: #FFFF;
+    padding: 10px;
+    border: transparent;
+    text-decoration: underline;
+    font-size: inherit;
+}
+
+#input-field
+{
+    background-color: #3c444e;
+    color: #FFFF;
+    width: 25vw;
+    height: 4vh;
+    border-radius: 12px;
+    margin: 0.5rem;
+    padding: 0 1px 0 1px;
+    font-size: inherit;
+    border: none;
+}
