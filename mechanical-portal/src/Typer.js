@@ -13,9 +13,10 @@ export function Typer() {
     }, [])
     
     
-    const handleSpaceBar = (e) => {
+    const handleSpaceBar = (e) => 
+    {
         if (e.keyCode === 32) {
-            const input = e.target.value.trim();
+            const input = e.target.value.trim() + " ";
             e.preventDefault();
 
             checkInput(input);
@@ -23,12 +24,30 @@ export function Typer() {
             document.getElementById("input-field").value = "";
 
             setCurrentIndex(currentIndex + 1);
+
+            document.getElementById("input-field").style.backgroundColor = "#3c444e";
+
         }
     };
 
-    const checkInput = (input) => {
+    const inputFieldColor = (e) =>
+    {
+        const word = e.target.value;
+            
+        if (word !== text[currentIndex].substring(0, word.length) )
+        {
+            document.getElementById("input-field").style.backgroundColor = "red";
+        }
+        else
+        {
+            document.getElementById("input-field").style.backgroundColor = "#3c444e";
+        }
+    };
+
+    const checkInput = (input) => 
+    {
         if (input !== text[currentIndex]) {
-            setIncorrect([...incorrect, currentIndex]);
+            setIncorrect([...incorrect, currentIndex]);  
         }
     };
 
@@ -64,7 +83,7 @@ export function Typer() {
                     ))}
                 </div>
                 <span>
-                    <input id="input-field" type="text" onKeyUp={handleSpaceBar}></input>
+                    <input id={"input-field"} type="text" onChange={inputFieldColor} onKeyUp={handleSpaceBar}></input>
                     <button>redo</button>
                 </span>
             </div>
