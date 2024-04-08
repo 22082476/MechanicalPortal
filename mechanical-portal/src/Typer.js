@@ -6,6 +6,7 @@ export function Typer() {
     const [text, setText] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [incorrect, setIncorrect] = useState([]);
+    const [timeAcc, setTimeAcc] = useState({time: null, acc: null})
 
     useEffect(()=>
     {
@@ -27,11 +28,14 @@ export function Typer() {
 
             document.getElementById("input-field").style.backgroundColor = "#3c444e";
 
+            setTimeAcc({...timeAcc, acc: incorrect.length / text.length *})
+
         }
     };
 
     const inputFieldColor = (e) =>
     {
+        
         const word = e.target.value;
             
         if (word !== text[currentIndex].substring(0, word.length) )
@@ -65,7 +69,7 @@ export function Typer() {
     return (
         <div className="TypeDiv">
             <div className="center-div">
-                <span>
+                <span style={{color: "#FFFF"}}>
                     <button className={text.length == 10 ? "button-active" : "button"} onClick={() => setWords(10)}>10</button>
                     /
                     <button className={text.length == 25 ? "button-active" : "button"} onClick={() => setWords(25)}>25</button>
@@ -76,15 +80,19 @@ export function Typer() {
                     /
                     <button className={text.length == 250 ? "button-active" : "button"} onClick={() => setWords(250)}>250</button>
                 </span>
-                <div>
+                <span className='time-acc'>
+                    {timeAcc.time ? timeAcc.time : "XX "}
+                    /
+                    {timeAcc.acc ? timeAcc.acc + "%" : " XXX"}
+                </span>
+                <div className="text-div">
                     {text.map((word, index) => (
                         <span className={index === currentIndex ? "active" : (index < currentIndex ? (incorrect.includes(index) ? "incorrect" : "correct") : "not-active")} key={index}>{word} </span>
-
                     ))}
                 </div>
-                <span>
+                <span >
                     <input id={"input-field"} type="text" onChange={inputFieldColor} onKeyUp={handleSpaceBar}></input>
-                    <button>redo</button>
+                    <button className='redo-button'>redo</button>
                 </span>
             </div>
         </div>
