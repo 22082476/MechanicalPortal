@@ -13,7 +13,8 @@ export function Typer() {
         setWords(10) 
     }, [])
     
-    
+    const checkAcc = () => {}
+
     const handleSpaceBar = (e) => 
     {
         if (e.keyCode === 32) {
@@ -28,7 +29,7 @@ export function Typer() {
 
             document.getElementById("input-field").style.backgroundColor = "#3c444e";
 
-            setTimeAcc({...timeAcc, acc: incorrect.length / text.length *})
+            setTimeAcc({...timeAcc, acc: checkAcc()})
 
         }
     };
@@ -81,8 +82,10 @@ export function Typer() {
                     <button className={text.length == 250 ? "button-active" : "button"} onClick={() => setWords(250)}>250</button>
                 </span>
                 <span className='time-acc'>
+                    WPM
                     {timeAcc.time ? timeAcc.time : "XX "}
                     /
+                    ACC
                     {timeAcc.acc ? timeAcc.acc + "%" : " XXX"}
                 </span>
                 <div className="text-div">
