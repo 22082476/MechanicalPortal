@@ -13,24 +13,41 @@ export function Typer() {
         setWords(10) 
     }, [])
     
-    const checkAcc = () => {}
+    const checkAcc = () => 
+    {
+        let resultAcc = 100;
+
+        return resultAcc - (incorrect.length / text.length)
+
+    }
 
     const handleSpaceBar = (e) => 
     {
         if (e.keyCode === 32) {
-            const input = e.target.value.trim() + " ";
-            e.preventDefault();
+            
 
-            checkInput(input);
+            if (currentIndex != text.length-1)
+            {
+                const input = e.target.value.trim() + " ";
+                e.preventDefault();
 
-            document.getElementById("input-field").value = "";
+                checkInput(input);
 
-            setCurrentIndex(currentIndex + 1);
-
-            document.getElementById("input-field").style.backgroundColor = "#3c444e";
-
-            setTimeAcc({...timeAcc, acc: checkAcc()})
-
+                document.getElementById("input-field").value = "";
+    
+                setCurrentIndex(currentIndex + 1);
+    
+                document.getElementById("input-field").style.backgroundColor = "#3c444e";
+    
+                if(currentIndex == text.length-1)
+                {
+                    setTimeAcc({...timeAcc, acc: checkAcc()})
+                }
+            }
+            else
+            {
+                document.getElementById("input-field").readOnly = true;
+            }
         }
     };
 
@@ -62,31 +79,37 @@ export function Typer() {
             const randomIndex = Math.floor(Math.random() * json.words.length);
             newWords.push(json.words[randomIndex]);
         }
+        newWords.push(" ");
         setText(newWords);
         setCurrentIndex(0);
         setIncorrect([]);
     };
 
+    const handelRedo = () => 
+    {
+        location.reload();
+    }
+
     return (
         <div className="TypeDiv">
             <div className="center-div">
                 <span style={{color: "#FFFF"}}>
-                    <button className={text.length == 10 ? "button-active" : "button"} onClick={() => setWords(10)}>10</button>
+                    <button className={text.length == 11 ? "button-active" : "button"} onClick={() => setWords(10)}>10</button>
                     /
-                    <button className={text.length == 25 ? "button-active" : "button"} onClick={() => setWords(25)}>25</button>
+                    <button className={text.length == 26 ? "button-active" : "button"} onClick={() => setWords(25)}>25</button>
                     /
-                    <button className={text.length == 50 ? "button-active" : "button"} onClick={() => setWords(50)}>50</button>
+                    <button className={text.length == 51 ? "button-active" : "button"} onClick={() => setWords(50)}>50</button>
                     /
-                    <button className={text.length == 100 ? "button-active" : "button"} onClick={() => setWords(100)}>100</button>
+                    <button className={text.length == 101 ? "button-active" : "button"} onClick={() => setWords(100)}>100</button>
                     /
-                    <button className={text.length == 250 ? "button-active" : "button"} onClick={() => setWords(250)}>250</button>
+                    <button className={text.length == 251 ? "button-active" : "button"} onClick={() => setWords(250)}>250</button>
                 </span>
                 <span className='time-acc'>
-                    WPM
-                    {timeAcc.time ? timeAcc.time : "XX "}
+                    WPM:
+                    {timeAcc.time ? timeAcc.time : " XX "}
                     /
-                    ACC
-                    {timeAcc.acc ? timeAcc.acc + "%" : " XXX"}
+                    ACC:
+                    {timeAcc.acc ? timeAcc.acc + "%" : " XXXX"}
                 </span>
                 <div className="text-div">
                     {text.map((word, index) => (
@@ -95,7 +118,7 @@ export function Typer() {
                 </div>
                 <span >
                     <input id={"input-field"} type="text" onChange={inputFieldColor} onKeyUp={handleSpaceBar}></input>
-                    <button className='redo-button'>redo</button>
+                    <button className='redo-button' onClick={() => handelRedo()}>redo</button>
                 </span>
             </div>
         </div>
