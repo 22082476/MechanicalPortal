@@ -11,13 +11,18 @@ export function Typer() {
     useEffect(()=>
     {
         setWords(10) 
+        setTimeAcc({time: null, acc: null})
     }, [])
     
     const checkAcc = () => 
     {
-        let resultAcc = 100;
+        console.log(incorrect.length);
+        console.log(text.length-2);
+        console.log((incorrect.length / text.length -2));
+        console.log(9 / 9)
 
-        return resultAcc - (incorrect.length / text.length)
+
+        return (incorrect.length / text.length -2) * 100;
 
     }
 
@@ -39,7 +44,7 @@ export function Typer() {
     
                 document.getElementById("input-field").style.backgroundColor = "#3c444e";
     
-                if(currentIndex == text.length-1)
+                if(currentIndex == text.length-2)
                 {
                     setTimeAcc({...timeAcc, acc: checkAcc()})
                 }
@@ -109,7 +114,7 @@ export function Typer() {
                     {timeAcc.time ? timeAcc.time : " XX "}
                     /
                     ACC:
-                    {timeAcc.acc ? timeAcc.acc + "%" : " XXXX"}
+                    {timeAcc.acc ? (100 - timeAcc.acc) + "%" : " XXXX"}
                 </span>
                 <div className="text-div">
                     {text.map((word, index) => (
